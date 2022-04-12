@@ -44,11 +44,11 @@ decks:
             value: "/auth/admin"
           - name: ingress.console.rules[0].paths[0].pathType
             value: Prefix
-#      - type: file
-#        ref: https://raw.githubusercontent.com/gefyrahq/gefyra-demos/main/oauth2-demo/initialize-kc.yaml
-#
-#      - type: file
-#        ref: https://raw.githubusercontent.com/gefyrahq/gefyra-demos/main/oauth2-demo/oauth2-demo.yaml
+      - type: file
+        ref: https://raw.githubusercontent.com/gefyrahq/gefyra-demos/main/oauth2-demo/initialize-kc.yaml
+
+      - type: file
+        ref: https://raw.githubusercontent.com/gefyrahq/gefyra-demos/main/oauth2-demo/oauth2-demo.yaml
 
       # Everything below: Kubernetes Dashboard
       - type: helm
