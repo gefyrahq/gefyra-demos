@@ -23,7 +23,8 @@ decks:
   - name: oauth2-demo
     namespace: oauth2-demo
     notes: |
-      Please find the App at: https://oauth2-demo.127.0.0.1.nip.io:8080/ with username 'john@gefyra.dev' and password 'john@gefyra.dev'.
+      Please find the app at: http://oauth2-demo.127.0.0.1.nip.io:8080/ with username 'john@gefyra.dev' and password 'john@gefyra.dev'.
+      The Kubernetes dashboard is running at: http://dashboard.127.0.0.1.nip.io:8080
     sources:
       - type: helm
         ref: https://codecentric.github.io/helm-charts
