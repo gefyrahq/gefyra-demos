@@ -22,6 +22,8 @@ cluster:
 decks:
   - name: oauth2-demo
     namespace: oauth2-demo
+    notes: |
+      Please find the App at: https://oauth2-demo.127.0.0.1.nip.io:8080/ with username 'john@gefyra.dev' and password 'john@gefyra.dev'.
     sources:
       - type: helm
         ref: https://codecentric.github.io/helm-charts
