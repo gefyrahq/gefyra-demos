@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gefyra-golang-demo
+  labels:
+    app: gefyra-golang-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gefyra-golang-demo
+  template:
+    metadata:
+      labels:
+        app: gefyra-golang-demo
+    spec:
+      containers:
+      - name: gefyra-golang-demo
+        image: quay.io/blueshoe/gefyra-golang-example
+        ports:
+        - containerPort: 3333
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: gefyra-golang-demo
+  name: gefyra-golang-demo
+  namespace: golang-demo
+spec:
+  ports:
+  - port: 3333
+    protocol: TCP
+    targetPort: 3333
+  selector:
+    app: gefyra-golang-demo
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: gefyra-golang-demo-ingress
+spec:
+  rules:
+  - host: gefyra-golang.127.0.0.1.nip.io
+    http:
+        paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: gefyra-golang-demo
+              port:
+                number: 3333
