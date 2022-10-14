@@ -23,9 +23,7 @@ decks:
   - name: golang-gemo
     namespace: golang-demo
     notes: |
-      Please find the app at: http://oauth2-demo.127.0.0.1.nip.io:8080/ with username 'john@gefyra.dev' and password 'john@gefyra.dev'.
-      The Kubernetes dashboard is running at: http://dashboard.127.0.0.1.nip.io:8080
+      Please find the app at: http://gefyra-golang.127.0.0.1.nip.io:8080/.
     sources:
-      
       - type: file
         ref: ./workload.yaml
