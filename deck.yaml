@@ -88,7 +88,7 @@ decks:
               name: kubernetes-dashboard
               namespace: oauth2-demo
 
-  - name: golang-gemo
+  - name: golang-demo
     namespace: golang-demo
     notes: |
       Please find the app at: http://gefyra-golang.127.0.0.1.nip.io:8080/.
