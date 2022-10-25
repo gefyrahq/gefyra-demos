@@ -1,0 +1,57 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: backend
+  labels:
+    app: backend
+spec:
+  containers:
+    - name: backend
+      image: quay.io/gefyra/gefyra-demo-backend
+      ports:
+        - name: web
+          containerPort: 5002
+          protocol: TCP
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: frontend
+  labels:
+    app: frontend
+spec:
+  containers:
+    - name: backend
+      image: quay.io/gefyra/gefyra-demo-frontend
+      ports:
+        - name: web
+          containerPort: 5003
+          protocol: TCP
+      env:
+        - name: SVC_URL
+          value: "backend.default.svc.cluster.local:5002"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend
+spec:
+  selector:
+    app: backend
+  ports:
+  - protocol: TCP
+    port: 5002
+    targetPort: 5002
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend
+spec:
+  selector:
+    app: frontend
+  ports:
+  - protocol: "TCP"
+    port: 80
+    targetPort: 5003
+  type: LoadBalancer
