@@ -21,7 +21,7 @@ metadata:
     app: frontend
 spec:
   containers:
-    - name: backend
+    - name: frontend
       image: quay.io/gefyra/gefyra-demo-frontend
       ports:
         - name: web
@@ -29,7 +29,7 @@ spec:
           protocol: TCP
       env:
         - name: SVC_URL
-          value: "backend.default.svc.cluster.local:5002"
+          value: "frontend.default.svc.cluster.local:5002"
 ---
 apiVersion: v1
 kind: Service

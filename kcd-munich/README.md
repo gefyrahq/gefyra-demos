@@ -4,6 +4,8 @@ This demo was shown at KCD Munich. It consists of some workloads (`manifest` dir
 
 Build the apps locally and swap them with Gefyra into a Kubernetes cluster which has been provisioned with the given workloads from the manifest directory.
 
+The talk is available on [Youtube](https://www.youtube.com/watch?v=-HtBGPtaVo8).
+
 ## Try this demo
 
 **Prerequisites:**
@@ -76,7 +78,7 @@ What happens here?
 Done! The container now runs within the default namespace of the cluster. To run it within a different namespace try the following:
 
 ```bash
-gefyra run -I color-frontend -N frontend --env-from pod/frontend -p 5003:5003 --rm -n my-namespace
+gefyra run -d -I color-frontend -N frontend --env-from pod/frontend -p 5003:5003 --rm -n my-namespace
 ```
 
 `-n my-namespace` makes sure your container is connected to the correct namespace.
@@ -89,6 +91,21 @@ needs to connect to a database. In case the database is accessible within the cl
 
 ### Bridge a workload with Gefyra
 
-TODO
+Bridging your container allows other workloads within the cluster to connect to your local container.
+Before bridging you _must_ run the container with Gefyra. Let's run the backend with Gefyra:
+
+```bash
+gefyra run -d -I color-backend -N backend --env-from pod/backend -p 5002:5002 --rm -n my-namespace
+```
+
+Now the container is running and ready to bridge:
+
+```bash
+gefyra bridge -N backend -p 5002:5002 -n my-namespace --target pod/backend
+```
+
+When opening the frontend in the browser now it requests the color from our local backend container.
+
+That's it! 
 
 
