@@ -65,7 +65,7 @@ To connect a local container with the cluster we run it with Gefyra. Imagine thi
 image:
 
 ```bash
-gefyra run -I color-frontend -N frontend --env-from pod/frontend -p 5003:5003 --rm
+gefyra run -i color-frontend -N frontend --env-from pod/frontend -p 5003:5003 --rm
 ```
 
 What happens here?
@@ -78,7 +78,7 @@ What happens here?
 Done! The container now runs within the default namespace of the cluster. To run it within a different namespace try the following:
 
 ```bash
-gefyra run -d -I color-frontend -N frontend --env-from pod/frontend -p 5003:5003 --rm -n my-namespace
+gefyra run -d -i color-frontend -N frontend --env-from pod/frontend -p 5003:5003 --rm -n my-namespace
 ```
 
 `-n my-namespace` makes sure your container is connected to the correct namespace.
@@ -95,13 +95,13 @@ Bridging your container allows other workloads within the cluster to connect to 
 Before bridging you _must_ run the container with Gefyra. Let's run the backend with Gefyra:
 
 ```bash
-gefyra run -d -I color-backend -N backend --env-from pod/backend -p 5002:5002 --rm -n my-namespace
+gefyra run -d -i color-backend -N backend --env-from pod/backend -p 5002:5002 --rm -n my-namespace
 ```
 
 Now the container is running and ready to bridge:
 
 ```bash
-gefyra bridge -N backend -p 5002:5002 -n my-namespace --target pod/backend
+gefyra bridge -N backend -p 5002:5002 -n my-namespace --target pod/backend/backend
 ```
 
 When opening the frontend in the browser now it requests the color from our local backend container.

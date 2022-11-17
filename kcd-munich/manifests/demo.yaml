@@ -29,7 +29,7 @@ spec:
           protocol: TCP
       env:
         - name: SVC_URL
-          value: "frontend.default.svc.cluster.local:5002"
+          value: "backend.default.svc.cluster.local:5002"
 ---
 apiVersion: v1
 kind: Service
