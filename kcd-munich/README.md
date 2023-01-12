@@ -110,4 +110,4 @@ That's it!
 
 ### Sketch of setup
 
-<img src="https://github.com/gefyrahq/gefyra-demos/raw/main/kcd-munic/color_demo.drawio.png" alt="Scheme of setup"/>
+<img src="https://github.com/gefyrahq/gefyra-demos/raw/main/kcd-munich/color_demo.drawio.png" alt="Scheme of setup"/>
